@@ -11,4 +11,9 @@ class Beverage extends Model
     'gradation',
     'price',
   ];
+
+  public function bottle()
+    {
+        return $this->belongsTo('App\Bottle');
+    }
 }

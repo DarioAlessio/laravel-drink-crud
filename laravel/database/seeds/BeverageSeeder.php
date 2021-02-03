@@ -1,5 +1,7 @@
 <?php
 use App\Beverage;
+use App\Bottle;
+
 use Illuminate\Database\Seeder;
 
 class BeverageSeeder extends Seeder
@@ -11,6 +13,16 @@ class BeverageSeeder extends Seeder
      */
     public function run()
     {
-        factory(Beverage::class,20) ->create();
+        factory(Beverage::class,20)
+               ->make()
+               ->each(function($beverage){
+
+                  $bottle = Bottle::inRandomOrder()->first();
+                  $beverage->bottle()->associate($bottle);
+                  $beverage->save();
+
+
+        });
+
     }
 }

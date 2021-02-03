@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBeveragesTable extends Migration
+class CreateBottlesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,12 @@ class CreateBeveragesTable extends Migration
      */
     public function up()
     {
-        Schema::create('beverages', function (Blueprint $table) {
+        Schema::create('bottles', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->string('name',100);
-            $table->float('gradation');
-            $table->float('price');
-
-            $table->bigInteger('bottle_id')->unsigned(); 
-
+            $table->string('color',100);
+            
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ class CreateBeveragesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('beverages');
+        Schema::dropIfExists('bottles');
     }
 }
